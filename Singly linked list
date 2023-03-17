@@ -1,0 +1,87 @@
+#Stephanie Elfriede Ginting
+#2209110637
+import os
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class linkedlist:
+    def __init__(self):
+        self.head = None
+
+    def display(self):
+        if self.head is None:
+            print("")
+
+        else:
+            n=self.head
+            while n is not None:
+                print(n.data,"--->", end=" ")
+                n = n.next
+
+    def addFirst(self, data):
+        data_baru= Node(data)
+        if self.head == None:
+            self.head = data_baru
+        else:
+            data_baru.next = self.head
+            self.head = data_baru
+        
+
+    def deleteNode(self, key):
+        temp = self.head 
+
+        if (temp is not None): 
+            if (temp.data == key): 
+                self.head = temp.next
+                temp = None
+                return
+
+        while(temp is not None): 
+            if temp.data == key: 
+                break
+            prev = temp 
+            temp = temp.next
+
+        if(temp == None): 
+            return
+                
+        prev.next = temp.next
+        temp = None
+
+
+listy=linkedlist()
+while True: 
+    print("""
+            ====================================================================================
+            |                              ANTREAN DOWNLOAD                                    |
+            ====================================================================================
+            |                          1. Buat/Tambah Download                                 |
+            |                         2. Hapus Antrean Download                                |
+            |                                 3. Keluar                                        |        
+            ====================================================================================
+
+            """)
+    print("") 
+    pilih = str(input("Masukkan pilihan menu:"))
+    if pilih=="1":
+        lst= str(input("Masukkan judul Download:"))
+        listy.addFirst(lst)
+        os.system ("cls")
+        
+    elif pilih=="2":
+        lst= str(input("Masukkan judul download yang ingin dihapus:"))
+        listy.deleteNode(lst)
+        os.system ("cls")
+        
+    elif pilih=="3":
+        print("Terima kasih sudah menggunakan program ini")
+        break
+    else:
+        print("Tolong masukkan angka yang tersedia")
+        
+
+
+    listy.display()
